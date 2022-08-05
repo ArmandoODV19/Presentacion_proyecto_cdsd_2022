@@ -174,3 +174,25 @@ bins<-medium_bins$Bin_Id
 write.table(bins, "lista_medium_bins", quote = F, row.names = F, col.names = F)
 ```
 
+---
+# Bins
+
+```{r bi, eval=FALSE}
+mkdir  -p 05.Bins/{Genoma,Proteoma}
+
+cd 05.Bins
+
+grep ">" *.fa
+
+change_bin_name<-function(ruta, ambiente){
+ruta_original<-getwd()
+setwd(ruta)
+filez <- list.files()
+newname<-paste0(ambiente, "_", filez)
+file.rename(from=filez, to=newname)
+filez <- list.files()
+file.rename(from=filez, to=sub(pattern="\\.", replacement="_", filez))
+setwd(ruta_original)
+}
+```
+

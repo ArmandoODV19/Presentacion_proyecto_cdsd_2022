@@ -184,6 +184,29 @@ bins&lt;-medium_bins$Bin_Id
 write.table(bins, "lista_medium_bins", quote = F, row.names = F, col.names = F)
 ```
 
+---
+# Bins
+
+
+```r
+mkdir  -p 05.Bins/{Genoma,Proteoma}
+
+cd 05.Bins
+
+grep "&gt;" *.fa
+
+change_bin_name&lt;-function(ruta, ambiente){
+ruta_original&lt;-getwd()
+setwd(ruta)
+filez &lt;- list.files()
+newname&lt;-paste0(ambiente, "_", filez)
+file.rename(from=filez, to=newname)
+filez &lt;- list.files()
+file.rename(from=filez, to=sub(pattern="\\.", replacement="_", filez))
+setwd(ruta_original)
+}
+```
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
