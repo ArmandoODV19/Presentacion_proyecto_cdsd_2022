@@ -84,7 +84,28 @@ jgi_summarize_bam_contig_depths --outputDepth data/pulque-depth.txt data/pulque_
 metabat -i data/pulque.fasta -a data/pulque-depth.txt -o results/bins -t 4 --minCVSum 0 --saveCls -d -v --minCV 0.1 -m 2000
 ```
 
+---
+# DASTool
+
+Refinamiento
 
 
+Preparar datos de entrada
+
+```{r das, eval=FALSE}
+
+Fasta_to_Scaffolds2Bin.sh -i /home/user*/01.Metabat -e fa > htn.scaffolds2bin.tsv
+```
+
+
+```{r das2, eval=FALSE}
+PATH=/home/programs:$PATH
+
+cd /home/programs/DAS_Tool-1.1.2
+
+R CMD INSTALL package/DASTool_1.1.2.tar.gz
+
+/home/programs/DAS_Tool-1.1.2/DAS_Tool -i pulque_maxbin.contigs2bin.tsv,pulque_metabat.scaffolds2bin.tsv -l maxbin,metabat -c data/pulque.fasta -o results/pulque_bins --debug -t 4  --search_engine diamond --write_bins 1 
+```
 
 
