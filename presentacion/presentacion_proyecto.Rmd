@@ -115,6 +115,22 @@ R CMD INSTALL package/DASTool_1.1.2.tar.gz
 
 ```{r che, eval=FALSE}
 mkdir 03.CheckM
+
 cd 03.CheckM/
+
 ```
+
+Activamos el ambiente
+
+```{r che2, eval=FALSE}
+conda activate checkm_env
+```
+
+```{r che3, eval=FALSE}
+checkm  lineage_wf -t 4 -x fa /home/user/04.DAS_tool/results/pulque_bins_DASTool_bins DAStools-log_htn  -f CheckM-DAS_Tool_bins.txt
+
+sed -e '1,3d' CheckM-DAS_Tool_bins.txt | sed -e '37d' >CheckM-DAS_Tool_bins_mod.txt
+```
+
+
 
