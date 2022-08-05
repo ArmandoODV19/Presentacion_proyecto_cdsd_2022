@@ -438,4 +438,13 @@ Imagen
 
 # Anotación
 
+```{r anota, eval=FALSE}
+conda activate Interpro
+
+for i in $(ls *.faa); do sed -i "s/\*//g" $i; done
+
+for i in $(ls *.faa); do interproscan.sh -cpu 4 -goterms -pa -i $i > Log_Interpro_Scan_$i.txt; done 
+
+```
+
 
