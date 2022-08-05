@@ -48,6 +48,8 @@ d) Extracción de Bins
 
 e) Taxonomía
 
+f) Inferencia metabólica
+
 ---
 
 # MaxBin
@@ -303,7 +305,7 @@ GTDBK&lt;-read.table("/home/megadriveCURSO/pulqueGTBDBTK/classify/gtbdbtk.bac120
   na.strings ="", stringsAsFactors= F)%&gt;%
   as_tibble()
 
-htn_gtdbtk&lt;-GTDBK %&gt;%
+pulque_gtdbtk&lt;-GTDBK %&gt;%
   select(user_genome, classification) %&gt;%
   separate(classification, c("Domain", "Phylum", "Class", "Order",
                              "Family", "Genus", "Species"), sep= ";") %&gt;%
@@ -313,6 +315,42 @@ htn_gtdbtk&lt;-GTDBK %&gt;%
          Species)
 ```
 
+Haciendo metadatos
+
+
+```r
+write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", sep="\t", quote = F,
+            row.names = F, col.names = T)
+```
+
+---
+
+IMAGEN
+
+
+```r
+GTDBtk&lt;-htn_gtdbtk %&gt;%
+  count(Domain, Phylum) %&gt;%
+  rename(Number_of_MAGs = n) %&gt;%
+  ggplot(aes(x = Domain, 
+             y = Number_of_MAGs, fill = Phylum)) + 
+  geom_bar(stat = "identity", position=position_dodge())+
+  theme_minimal()
+```
+
+
+
+```r
+library(plotly)
+GTDBtk_p_fig &lt;- ggplotly(GTDBtk)
+```
+
+---
+ IMAGEN
+ 
+---
+
+# Inferencia metabólica
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

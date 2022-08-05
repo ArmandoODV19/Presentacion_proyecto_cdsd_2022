@@ -42,6 +42,8 @@ d) Extracción de Bins
 
 e) Taxonomía
 
+f) Inferencia metabólica
+
 ---
 
 # MaxBin
@@ -296,8 +298,34 @@ pulque_gtdbtk<-GTDBK %>%
 
 Haciendo metadatos
 
-```{r meta, eval=FALSE}
+```{r meta10, eval=FALSE}
 write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", sep="\t", quote = F,
             row.names = F, col.names = T)
 ```
 
+---
+
+IMAGEN
+
+```{r image1, eval=FALSE}
+GTDBtk<-htn_gtdbtk %>%
+  count(Domain, Phylum) %>%
+  rename(Number_of_MAGs = n) %>%
+  ggplot(aes(x = Domain, 
+             y = Number_of_MAGs, fill = Phylum)) + 
+  geom_bar(stat = "identity", position=position_dodge())+
+  theme_minimal()
+```
+
+
+```{r imagen2, eval=FALSE}
+library(plotly)
+GTDBtk_p_fig <- ggplotly(GTDBtk)
+```
+
+---
+ IMAGEN
+ 
+---
+
+# Inferencia metabólica
