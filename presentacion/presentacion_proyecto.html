@@ -46,6 +46,8 @@ c) DASTool
 
 d) Extracción de Bins
 
+e) Taxonomía
+
 ---
 
 # MaxBin
@@ -243,6 +245,26 @@ files &lt;- paste0("/home/user01/05.Bins/pulque_Genoma/", files)
 map(files, add_names_to_seqs)
 files
 ```
+
+---
+# Renombrando Bins
+
+
+```r
+change_bin_name&lt;-function(ruta){
+ruta_original&lt;-getwd()
+setwd(ruta)
+filez &lt;- list.files()
+file.rename(from=filez, to=sub(pattern="_renamed", replacement="", filez))
+setwd(ruta_original)
+}
+
+change_bin_name("/home/user01/05.Bins/Genoma/01.Bins_named")
+```
+
+---
+# Taxonomía
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
