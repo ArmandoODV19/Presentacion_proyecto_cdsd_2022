@@ -348,3 +348,83 @@ ln -s /home/user01/Bins/Proteoma/*.faa 01.Proteomas
 conda activate kofamscan
 ```
 
+```{r kegg2, eval=FALSE}
+htn_mapp<-read_ko("Kofamscan/02.KO_results/") %>%
+    mapping_ko()
+```
+
+---
+
+```{r kegg3, eval=FALSE}
+Overview<-c("Central Metabolism", "Carbon Fixation", 
+            "Nitrogen Metabolism", "Sulfur Metabolism", "Fermentation", 
+            "Methane Metabolism")
+Energy_metabolisms_pulque<-pulque_mapp %>%
+  drop_na(Cycle) %>%
+  get_subset_pathway(rbims_pathway, Overview) 
+```
+
+```{r kegg4, eval=FALSE}
+plot_bubble(tibble_ko = Energy_metabolisms_htn,
+            x_axis = Bin_name, 
+            y_axis = Pathway_cycle,
+            analysis="KEGG",
+            calc="Percentage",
+            range_size = c(1,10),
+            y_labs=FALSE,
+            x_labs=FALSE)  
+```
+
+
+---
+IMAGEN
+---
+
+# Graficando con metadatos
+
+```{r kegg5, eval=FALSE}
+Metadatos<-read_delim("/home/megadriveCURSO/pulque/Metadatos.txt", delim="\t")
+
+
+plot_bubble(tibble_ko = Energy_metabolisms_htn,
+            x_axis = Bin_name, 
+            y_axis = Pathway_cycle,
+            analysis="KEGG",
+            data_experiment = Metadatos,
+            calc="Percentage",
+            color_character = Class,
+            range_size = c(1,10),
+            y_labs=FALSE,
+            x_labs=FALSE) 
+```
+
+---
+
+IMAGEN
+
+---
+
+# Graficando una sola vía
+
+```{r kegg6, eval=FALSE}
+Fermentation_pulque<-htn_mapp %>%
+  drop_na(Cycle) %>%
+  get_subset_pathway(Cycle, "fermentation")
+```
+
+```{r}
+plot_heatmap(tibble_ko=Fermentation_pulque, 
+             y_axis=Genes,
+             analysis = "KEGG",
+             calc="Binary")
+```
+
+---
+
+Imagen
+
+---
+
+# 
+
+

@@ -372,6 +372,66 @@ ln -s /home/user01/Bins/Proteoma/*.faa 01.Proteomas
 conda activate kofamscan
 ```
 
+
+```r
+htn_mapp&lt;-read_ko("Kofamscan/02.KO_results/") %&gt;%
+    mapping_ko()
+```
+
+---
+
+
+```r
+Overview&lt;-c("Central Metabolism", "Carbon Fixation", 
+            "Nitrogen Metabolism", "Sulfur Metabolism", "Fermentation", 
+            "Methane Metabolism")
+Energy_metabolisms_pulque&lt;-pulque_mapp %&gt;%
+  drop_na(Cycle) %&gt;%
+  get_subset_pathway(rbims_pathway, Overview) 
+```
+
+
+```r
+plot_bubble(tibble_ko = Energy_metabolisms_htn,
+            x_axis = Bin_name, 
+            y_axis = Pathway_cycle,
+            analysis="KEGG",
+            calc="Percentage",
+            range_size = c(1,10),
+            y_labs=FALSE,
+            x_labs=FALSE)  
+```
+
+
+---
+IMAGEN
+---
+
+# Graficando con metadatos
+
+
+```r
+Metadatos&lt;-read_delim("/home/megadriveCURSO/pulque/Metadatos.txt", delim="\t")
+
+
+plot_bubble(tibble_ko = Energy_metabolisms_htn,
+            x_axis = Bin_name, 
+            y_axis = Pathway_cycle,
+            analysis="KEGG",
+            data_experiment = Metadatos,
+            calc="Percentage",
+            color_character = Class,
+            range_size = c(1,10),
+            y_labs=FALSE,
+            x_labs=FALSE) 
+```
+
+---
+
+IMAGEN
+
+---
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
