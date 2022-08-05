@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="author" content="Patricia Bustos, Montserrat García, Celso Cortés, Antonio Ovalle, Tobias Portillo, Eduardo Juscamayta, Armando Ocampo" />
     <meta name="date" content="2022-08-05" />
-    <script src="libs/header-attrs/header-attrs.js"></script>
-    <script src="libs/clipboard/clipboard.min.js"></script>
-    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
-    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -49,6 +49,8 @@ d) Extracción de Bins
 e) Taxonomía
 
 f) Inferencia metabólica
+
+g) Anotación
 
 ---
 
@@ -327,6 +329,8 @@ write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", s
 
 IMAGEN
 
+![]("path/")
+
 
 ```r
 GTDBtk&lt;-htn_gtdbtk %&gt;%
@@ -347,6 +351,8 @@ GTDBtk_p_fig &lt;- ggplotly(GTDBtk)
 
 ---
  IMAGEN
+ 
+ ![]("path/")
  
 ---
 
@@ -405,6 +411,8 @@ plot_bubble(tibble_ko = Energy_metabolisms_htn,
 
 ---
 IMAGEN
+
+![]("path/")
 ---
 
 # Graficando con metadatos
@@ -430,7 +438,36 @@ plot_bubble(tibble_ko = Energy_metabolisms_htn,
 
 IMAGEN
 
+![]("path/")
 ---
+
+# Graficando una sola vía
+
+
+```r
+Fermentation_pulque&lt;-htn_mapp %&gt;%
+  drop_na(Cycle) %&gt;%
+  get_subset_pathway(Cycle, "fermentation")
+```
+
+
+```r
+#plot_heatmap(tibble_ko=Fermentation_pulque, 
+#             y_axis=Genes,
+#             analysis = "KEGG",
+#             calc="Binary")
+```
+
+---
+
+Imagen
+
+![]("path/")
+
+---
+
+# Anotación
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

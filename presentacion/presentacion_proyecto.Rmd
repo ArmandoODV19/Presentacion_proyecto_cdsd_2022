@@ -44,6 +44,8 @@ e) Taxonomía
 
 f) Inferencia metabólica
 
+g) Anotación
+
 ---
 
 # MaxBin
@@ -307,6 +309,8 @@ write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", s
 
 IMAGEN
 
+![]("path/")
+
 ```{r image1, eval=FALSE}
 GTDBtk<-htn_gtdbtk %>%
   count(Domain, Phylum) %>%
@@ -325,6 +329,8 @@ GTDBtk_p_fig <- ggplotly(GTDBtk)
 
 ---
  IMAGEN
+ 
+ ![]("path/")
  
 ---
 
@@ -378,6 +384,8 @@ plot_bubble(tibble_ko = Energy_metabolisms_htn,
 
 ---
 IMAGEN
+
+![]("path/")
 ---
 
 # Graficando con metadatos
@@ -402,6 +410,7 @@ plot_bubble(tibble_ko = Energy_metabolisms_htn,
 
 IMAGEN
 
+![]("path/")
 ---
 
 # Graficando una sola vía
@@ -413,18 +422,20 @@ Fermentation_pulque<-htn_mapp %>%
 ```
 
 ```{r}
-plot_heatmap(tibble_ko=Fermentation_pulque, 
-             y_axis=Genes,
-             analysis = "KEGG",
-             calc="Binary")
+#plot_heatmap(tibble_ko=Fermentation_pulque, 
+#             y_axis=Genes,
+#             analysis = "KEGG",
+#             calc="Binary")
 ```
 
 ---
 
 Imagen
 
+![]("path/")
+
 ---
 
-# 
+# Anotación
 
 
