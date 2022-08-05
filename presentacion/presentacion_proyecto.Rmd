@@ -1,7 +1,6 @@
 ---
-title: "Presentation Ninja"
-subtitle: "⚔<br/>with xaringan"
-author: "Yihui Xie"
+title: "Proyecto 1: el microbioma del pulque"
+author: "Patricia Bustos, Celso Cortés, Antonio Ovalle, José Ovando, Tobias Portillo, Armando Ocampo"
 institute: "CDSD 2022"
 date: "2016/12/12 (updated: `r Sys.Date()`)"
 output:
