@@ -459,12 +459,12 @@ library(tidyverse)
 
 ```{r anota3, eval=FALSE}
 interpro_Interpro_profile<-read_interpro(
-  data_interpro = "09.Interpro/01.Proteomas/htn_interpro.tsv", 
+  data_interpro = "home/megadriveCURSO/plque/05.Bins/pulque_Genoma/bins_named/pulque_interpro.tsv", 
   database="INTERPRO", profile = T) %>%
   filter(!str_detect(INTERPRO, "-"))
 
 important_INTERPRO<-get_subset_pca(tibble_rbims=interpro_Interpro_profile, 
-                                cos2_val=0.95,
+                                cos2_val=0.97,
                                 analysis="INTERPRO")
 
 plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = T)
@@ -472,3 +472,8 @@ plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distanc
 plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = F)
 ```
 
+---
+
+IMAGEN
+
+![]("path")

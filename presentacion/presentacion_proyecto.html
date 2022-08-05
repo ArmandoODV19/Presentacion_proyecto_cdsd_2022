@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="author" content="Patricia Bustos, Montserrat García, Celso Cortés, Antonio Ovalle, Tobias Portillo, Eduardo Juscamayta, Armando Ocampo" />
     <meta name="date" content="2022-08-05" />
-    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
-    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
-    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
-    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -492,12 +492,12 @@ library(tidyverse)
 
 ```r
 interpro_Interpro_profile&lt;-read_interpro(
-  data_interpro = "09.Interpro/01.Proteomas/htn_interpro.tsv", 
+  data_interpro = "home/megadriveCURSO/plque/05.Bins/pulque_Genoma/bins_named/pulque_interpro.tsv", 
   database="INTERPRO", profile = T) %&gt;%
   filter(!str_detect(INTERPRO, "-"))
 
 important_INTERPRO&lt;-get_subset_pca(tibble_rbims=interpro_Interpro_profile, 
-                                cos2_val=0.95,
+                                cos2_val=0.97,
                                 analysis="INTERPRO")
 
 plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = T)
@@ -505,6 +505,11 @@ plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distanc
 plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = F)
 ```
 
+---
+
+IMAGEN
+
+![]("path")
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
