@@ -1,6 +1,6 @@
 ---
 title: "Proyecto 1: el microbioma del pulque"
-author: "Patricia Bustos, Celso Cortés, Antonio Ovalle, José Ovando, Tobias Portillo, Eduardo, Armando Ocampo"
+author: "Patricia Bustos, Montserrat García, Celso Cortés, Antonio Ovalle, José Ovando, Tobias Portillo, Eduardo, Armando Ocampo"
 institute: "CDSD 2022"
 date: "`r Sys.Date()`"
 output:
