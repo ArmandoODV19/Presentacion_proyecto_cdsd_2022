@@ -145,6 +145,28 @@ checkm  lineage_wf -t 4 -x fa /home/user/04.DAS_tool/results/pulque_bins_DASTool
 sed -e '1,3d' CheckM-DAS_Tool_bins.txt | sed -e '37d' &gt;CheckM-DAS_Tool_bins_mod.txt
 ```
 
+---
+
+# Extracción de Bins
+
+
+```r
+library(tidyverse)
+
+
+checkm&lt;-read.table("CheckM-DAS_Tool_bins_mod.txt", sep = "", header = F, na.strings ="", stringsAsFactors= F)
+
+
+colnames(checkm)&lt;-c("Bin_Id", "Marker", "lineage", "Number_of_genomes", 
+                         "Number_of_markers", "Number_of_marker_sets", 
+                         "0", "1", "2", "3", "4", "5", "Completeness", 
+                         "Contamination", "Strain_heterogeneity")  
+
+good_bins&lt;-checkm %&gt;%
+  select(Bin_Id, Marker, Completeness, Contamination) %&gt;%
+  filter(Completeness &gt;= 50.00) %&gt;%
+  filter(Contamination &lt;= 10.00) 
+```
 
 
     </textarea>
