@@ -27,10 +27,64 @@ class: center, middle, inverse, title-slide
 ---
 
 
+---
 
+# Flujo de trabajo
 
+a) MaxBin
+
+b) MetaBat
+
+c) DASTool
+
+d) Extracción de Bins
 
 ---
+
+# MaxBin
+
+Generación de enlaces simbólicos
+
+
+```r
+ mkdir -p 01.Metabat/{data,results}
+ cd 01.Metabat/
+ ln -s /home/diana/samples/pulque/data/pulque.fasta data/  
+ ln -s /home/diana/samples/pulque/data/pulque_sorted.bam  data/ 
+```
+
+Activación de ambiente
+
+
+```r
+conda activate maxbin_env
+```
+
+Cálculo de bins
+
+
+```r
+run_MaxBin.pl -contig data/pulque.fasta -out results/maxbin -abund data/pulque-depth.txt -max_iteration 2
+```
+
+---
+
+# MetaBat
+
+
+```r
+mkdir -p 02.Metabat/{data,results}
+cd 02.Metabat/
+ln -s /home/diana/samples/pulque/data/pulque.fasta data/  
+ln -s /home/diana/samples/pulque/data/pulque_sorted.bam  data/ 
+```
+
+
+
+
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

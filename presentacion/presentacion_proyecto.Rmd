@@ -12,6 +12,8 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       
+
+---
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
 style_mono_accent(
@@ -23,7 +25,55 @@ style_mono_accent(
 ```
 ---
 
+# Flujo de trabajo
 
+a) MaxBin
 
+b) MetaBat
+
+c) DASTool
+
+d) Extracción de Bins
 
 ---
+
+# MaxBin
+
+Generación de enlaces simbólicos
+
+```{r MAX, eval=FALSE}
+ mkdir -p 01.Metabat/{data,results}
+ cd 01.Metabat/
+ ln -s /home/diana/samples/pulque/data/pulque.fasta data/  
+ ln -s /home/diana/samples/pulque/data/pulque_sorted.bam  data/ 
+```
+
+Activación de ambiente
+
+```{r max1, eval=FALSE}
+conda activate maxbin_env
+```
+
+Cálculo de bins
+
+```{r max2, eval=FALSE}
+run_MaxBin.pl -contig data/pulque.fasta -out results/maxbin -abund data/pulque-depth.txt -max_iteration 2
+```
+
+---
+
+# MetaBat
+
+```{r meta, eval=FALSE}
+mkdir -p 02.Metabat/{data,results}
+cd 02.Metabat/
+ln -s /home/diana/samples/pulque/data/pulque.fasta data/  
+ln -s /home/diana/samples/pulque/data/pulque_sorted.bam  data/ 
+```
+
+
+
+
+
+
+
