@@ -168,6 +168,21 @@ good_bins&lt;-checkm %&gt;%
   filter(Contamination &lt;= 10.00) 
 ```
 
+---
+
+# Extracción de Bins
+
+
+```r
+medium_bins&lt;-checkm %&gt;%
+  select(Bin_Id, Marker, Completeness, Contamination) %&gt;%
+  filter(Completeness &gt;= 50.00) %&gt;%
+  filter(Contamination &lt;= 20.00) 
+
+bins&lt;-medium_bins$Bin_Id
+
+write.table(bins, "lista_medium_bins", quote = F, row.names = F, col.names = F)
+```
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

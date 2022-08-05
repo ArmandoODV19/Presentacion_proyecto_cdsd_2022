@@ -152,6 +152,25 @@ good_bins<-checkm %>%
   select(Bin_Id, Marker, Completeness, Contamination) %>%
   filter(Completeness >= 50.00) %>%
   filter(Contamination <= 10.00) 
+
+
+
+
+
 ```
 
+---
+
+# Extracción de Bins
+
+```{r studio2, eval=FALSE}
+medium_bins<-checkm %>%
+  select(Bin_Id, Marker, Completeness, Contamination) %>%
+  filter(Completeness >= 50.00) %>%
+  filter(Contamination <= 20.00) 
+
+bins<-medium_bins$Bin_Id
+
+write.table(bins, "lista_medium_bins", quote = F, row.names = F, col.names = F)
+```
 
