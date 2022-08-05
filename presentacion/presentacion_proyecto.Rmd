@@ -271,6 +271,26 @@ export GTDBTK_DATA_PATH=/home/programs/DB/release207_v2
 
 
 ```{r gt4, eval=FALSE}
-gtdbtk classify_wf --genome_dir /home/user01/05.Bins/pulque/Genoma/01.Bins_named --out_dir /home/mirna/11.GTDBTK --cpus 4 -x fa 
+gtdbtk classify_wf --genome_dir /home/user01/05.Bins/pulque_Genoma/Bins_named --out_dir /home/megadriveCURSO/pulqueGTDBTK --cpus 4 -x fa 
+```
+
+---
+
+# Taxonomía
+
+```{r tax1, eval=FALSE}
+GTDBK<-read.table("11.GTDBTK/gtdbtk.bac120.summary.tsv", 
+  sep = "\t", header = T, 
+  na.strings ="", stringsAsFactors= F)%>%
+  as_tibble()
+
+htn_gtdbtk<-GTDBK %>%
+  select(user_genome, classification) %>%
+  separate(classification, c("Domain", "Phylum", "Class", "Order",
+                             "Family", "Genus", "Species"), sep= ";") %>%
+  rename(Bin_name=user_genome)  %>%
+  unite(Bin_name_2, c("Bin_name", "Phylum"), remove = FALSE) %>%
+  select(Bin_name, Domain, Phylum, Class, Order, Family, Genus, 
+         Species)
 ```
 

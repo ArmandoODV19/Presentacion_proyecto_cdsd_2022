@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="author" content="Patricia Bustos, Montserrat García, Celso Cortés, Antonio Ovalle, Tobias Portillo, Eduardo Juscamayta, Armando Ocampo" />
     <meta name="date" content="2022-08-05" />
-    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
-    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
-    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
-    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -289,7 +289,28 @@ export GTDBTK_DATA_PATH=/home/programs/DB/release207_v2
 
 
 ```r
-gtdbtk classify_wf --genome_dir /home/user01/05.Bins/pulque/Genoma/01.Bins_named --out_dir /home/mirna/11.GTDBTK --cpus 4 -x fa 
+gtdbtk classify_wf --genome_dir /home/user01/05.Bins/pulque_Genoma/Bins_named --out_dir /home/megadriveCURSO/pulqueGTDBTK --cpus 4 -x fa 
+```
+
+---
+
+# Taxonomía
+
+
+```r
+GTDBK&lt;-read.table("11.GTDBTK/gtdbtk.bac120.summary.tsv", 
+  sep = "\t", header = T, 
+  na.strings ="", stringsAsFactors= F)%&gt;%
+  as_tibble()
+
+htn_gtdbtk&lt;-GTDBK %&gt;%
+  select(user_genome, classification) %&gt;%
+  separate(classification, c("Domain", "Phylum", "Class", "Order",
+                             "Family", "Genus", "Species"), sep= ";") %&gt;%
+  rename(Bin_name=user_genome)  %&gt;%
+  unite(Bin_name_2, c("Bin_name", "Phylum"), remove = FALSE) %&gt;%
+  select(Bin_name, Domain, Phylum, Class, Order, Family, Genus, 
+         Species)
 ```
 
     </textarea>
