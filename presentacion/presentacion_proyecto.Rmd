@@ -24,6 +24,12 @@ style_mono_accent(
 )
 ```
 
+```{r xaringanExtra-clipboard, echo=FALSE}
+# No quitar! Es para que aparezca la opción copy code en los R chunks
+xaringanExtra::use_clipboard()
+```
+
+
 # Flujo de trabajo
 
 a) MaxBin
