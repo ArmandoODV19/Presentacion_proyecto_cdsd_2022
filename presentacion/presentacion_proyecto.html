@@ -475,8 +475,35 @@ conda activate Interpro
 for i in $(ls *.faa); do sed -i "s/\*//g" $i; done
 
 for i in $(ls *.faa); do interproscan.sh -cpu 4 -goterms -pa -i $i &gt; Log_Interpro_Scan_$i.txt; done 
+
+
+cat *.tsv &gt; htn_interpro.tsv
 ```
 
+
+```r
+library(rbims)
+library(tidyverse)
+```
+
+---
+
+
+
+```r
+interpro_Interpro_profile&lt;-read_interpro(
+  data_interpro = "09.Interpro/01.Proteomas/htn_interpro.tsv", 
+  database="INTERPRO", profile = T) %&gt;%
+  filter(!str_detect(INTERPRO, "-"))
+
+important_INTERPRO&lt;-get_subset_pca(tibble_rbims=interpro_Interpro_profile, 
+                                cos2_val=0.95,
+                                analysis="INTERPRO")
+
+plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = T)
+
+plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = F)
+```
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

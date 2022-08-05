@@ -445,6 +445,30 @@ for i in $(ls *.faa); do sed -i "s/\*//g" $i; done
 
 for i in $(ls *.faa); do interproscan.sh -cpu 4 -goterms -pa -i $i > Log_Interpro_Scan_$i.txt; done 
 
+
+cat *.tsv > htn_interpro.tsv
 ```
 
+```{r anota2, eval=FALSE}
+library(rbims)
+library(tidyverse)
+```
+
+---
+
+
+```{r anota3, eval=FALSE}
+interpro_Interpro_profile<-read_interpro(
+  data_interpro = "09.Interpro/01.Proteomas/htn_interpro.tsv", 
+  database="INTERPRO", profile = T) %>%
+  filter(!str_detect(INTERPRO, "-"))
+
+important_INTERPRO<-get_subset_pca(tibble_rbims=interpro_Interpro_profile, 
+                                cos2_val=0.95,
+                                analysis="INTERPRO")
+
+plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = T)
+
+plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distance = F)
+```
 
