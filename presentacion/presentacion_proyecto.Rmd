@@ -71,7 +71,18 @@ ln -s /home/diana/samples/pulque/data/pulque.fasta data/
 ln -s /home/diana/samples/pulque/data/pulque_sorted.bam  data/ 
 ```
 
+Activamos el ambiente
+```{r meta2, eval=FALSE}
+conda activate metabat_env
+```
 
+Ensamble y archivos de profundidad
+
+```{r meta3, eval=FALSE}
+jgi_summarize_bam_contig_depths --outputDepth data/pulque-depth.txt data/pulque_sorted.bam
+
+metabat -i data/pulque.fasta -a data/pulque-depth.txt -o results/bins -t 4 --minCVSum 0 --saveCls -d -v --minCV 0.1 -m 2000
+```
 
 
 
