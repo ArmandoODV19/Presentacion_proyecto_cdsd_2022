@@ -1,4 +1,5 @@
 change_bin_name(home/user01/05.Bins, "pulque")
+
 add_names_to_seqs <- function(nombre_del_archivo){
   filenames <- unlist(strsplit(nombre_del_archivo, "/"))
   filenames <- filenames[[grep("fa", filenames)]]
