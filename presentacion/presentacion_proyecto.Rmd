@@ -279,12 +279,12 @@ gtdbtk classify_wf --genome_dir /home/user01/05.Bins/pulque_Genoma/Bins_named --
 # Taxonomía
 
 ```{r tax1, eval=FALSE}
-GTDBK<-read.table("11.GTDBTK/gtdbtk.bac120.summary.tsv", 
+GTDBK<-read.table("/home/megadriveCURSO/pulqueGTBDBTK/classify/gtbdbtk.bac120.summary.tsv", 
   sep = "\t", header = T, 
   na.strings ="", stringsAsFactors= F)%>%
   as_tibble()
 
-htn_gtdbtk<-GTDBK %>%
+pulque_gtdbtk<-GTDBK %>%
   select(user_genome, classification) %>%
   separate(classification, c("Domain", "Phylum", "Class", "Order",
                              "Family", "Genus", "Species"), sep= ";") %>%
@@ -292,5 +292,12 @@ htn_gtdbtk<-GTDBK %>%
   unite(Bin_name_2, c("Bin_name", "Phylum"), remove = FALSE) %>%
   select(Bin_name, Domain, Phylum, Class, Order, Family, Genus, 
          Species)
+```
+
+Haciendo metadatos
+
+```{r meta, eval=FALSE}
+write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", sep="\t", quote = F,
+            row.names = F, col.names = T)
 ```
 
