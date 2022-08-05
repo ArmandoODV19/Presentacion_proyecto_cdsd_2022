@@ -11,8 +11,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
----
-
+      
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
 style_mono_accent(
@@ -22,6 +21,9 @@ style_mono_accent(
   code_font_google   = google_font("Fira Mono")
 )
 ```
+---
+
+
 
 
 ---
