@@ -109,3 +109,12 @@ R CMD INSTALL package/DASTool_1.1.2.tar.gz
 ```
 
 
+---
+
+# Extracción de Bins
+
+```{r che, eval=FALSE}
+mkdir 03.CheckM
+cd 03.CheckM/
+```
+
