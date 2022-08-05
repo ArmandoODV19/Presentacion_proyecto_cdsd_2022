@@ -250,4 +250,27 @@ change_bin_name("/home/user01/05.Bins/Genoma/01.Bins_named")
 ---
 # Taxonomía
 
+Para la taxonomía utilizamos GTDBTK
+
+```{r gt, eval=FALSE}
+mkdir 06.GTDBTK
+
+```
+
+Activamos el ambiente
+
+```{r gt2, eval=FALSE}
+conda activate gtdbtk-2.1.0
+```
+
+Exportamos base de datos
+
+```{r gt3, eval=FALSE}
+export GTDBTK_DATA_PATH=/home/programs/DB/release207_v2 
+```
+
+
+```{r gt4, eval=FALSE}
+gtdbtk classify_wf --genome_dir /home/user01/05.Bins/pulque/Genoma/01.Bins_named --out_dir /home/mirna/11.GTDBTK --cpus 4 -x fa 
+```
 
