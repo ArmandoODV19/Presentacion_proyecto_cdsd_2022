@@ -104,7 +104,7 @@ Preparar datos de entrada
 
 
 ```r
-Fasta_to_Scaffolds2Bin.sh -i /home/user*/01.Metabat -e fa &gt; htn.scaffolds2bin.tsv
+Fasta_to_Scaffolds2Bin.sh -i /home/user01/01.Metabat -e fa &gt; htn.scaffolds2bin.tsv
 ```
 
 
@@ -140,7 +140,7 @@ conda activate checkm_env
 
 
 ```r
-checkm  lineage_wf -t 4 -x fa /home/user/04.DAS_tool/results/pulque_bins_DASTool_bins DAStools-log_htn  -f CheckM-DAS_Tool_bins.txt
+checkm  lineage_wf -t 4 -x fa /home/user01/04.DAS_tool/results/pulque_bins_DASTool_bins DAStools-log_htn  -f CheckM-DAS_Tool_bins.txt
 
 sed -e '1,3d' CheckM-DAS_Tool_bins.txt | sed -e '37d' &gt;CheckM-DAS_Tool_bins_mod.txt
 ```
@@ -205,6 +205,34 @@ filez &lt;- list.files()
 file.rename(from=filez, to=sub(pattern="\\.", replacement="_", filez))
 setwd(ruta_original)
 }
+```
+
+---
+
+# Phylotools
+
+
+```r
+library(phylotools)
+library(tidyverse)
+
+add_names_to_seqs &lt;- function(nombre_del_archivo){
+  filenames &lt;- unlist(strsplit(nombre_del_archivo, "/"))
+  filenames &lt;- filenames[[grep("fa", filenames)]]
+  divide &lt;- unlist(strsplit(filenames, "\\."))
+  bin_name &lt;- divide[1]
+  termination &lt;- divide[2]
+  old_name &lt;- get.fasta.name(nombre_del_archivo)
+  new_name &lt;- paste0( bin_name, "-scaffold-", old_name) 
+  ref2 &lt;- data.frame(old_name, new_name)
+  out_file &lt;- paste0(bin_name, "_renamed", ".", termination)
+  rename.fasta(infile = nombre_del_archivo, ref_table = ref2, outfile = out_file)
+}
+
+files &lt;- list.files(".")
+files &lt;- paste0("/home/user01/05.Bins/Genoma/", files)
+
+map(files, add_names_to_seqs)
 ```
 
     </textarea>
