@@ -23,7 +23,6 @@ style_mono_accent(
   code_font_google   = google_font("Fira Mono")
 )
 ```
----
 
 # Flujo de trabajo
 
