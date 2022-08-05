@@ -339,6 +339,10 @@ grep ">" *.faa
 KEGG
 
 ```{r kegg, eval=FALSE}
+mkdir -p Kofamscan/{01.Proteomas,02.KO_results}
+cd Kofamscan/
+ln -s /home/user01/Bins/Proteoma/*.faa 01.Proteomas 
+
 /home/programs/DB/kofam/kofam_scan-1.3.0/exec_annotation -o /home/user01/Kofamscan/htn_bins_63.fa.faa.txt /home/user01/Bins/Proteoma/htn_bins_63.fa.faa  --report-unannotated  --cpu 4
 
 conda activate kofamscan
