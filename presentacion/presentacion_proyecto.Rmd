@@ -329,9 +329,9 @@ GTDBtk_p_fig <- ggplotly(GTDBtk)
 ```
 
 ---
- IMAGEN
- 
- ![]("path/")
+# Proteinas
+
+![](presentacion_proyecto_files/imagenes/protein.png){width=30px height=30px}
  
 ---
 
