@@ -472,3 +472,4 @@ plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distanc
 
 ---
 
+![](presentacion_proyecto_files/imagenes/gracias.jpg)
