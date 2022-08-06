@@ -471,6 +471,3 @@ plot_heatmap(important_INTERPRO, y_axis=INTERPRO, analysis = "INTERPRO", distanc
 
 ---
 
-IMAGEN
-
-![]("path")
