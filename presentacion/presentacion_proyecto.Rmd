@@ -306,10 +306,11 @@ write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", s
 ```
 
 ---
+# Taxonomía
 
-IMAGEN
+![](presentacion_proyecto_files/imagenes/domain.png)
+---
 
-![]("path/")
 
 ```{r image1, eval=FALSE}
 GTDBtk<-htn_gtdbtk %>%
