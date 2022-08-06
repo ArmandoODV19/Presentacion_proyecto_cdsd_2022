@@ -11,3 +11,6 @@ style_mono_accent(
 
 
 
+pagedown::chrome_print("presentacion/presentacion_proyecto.html")
+
+
