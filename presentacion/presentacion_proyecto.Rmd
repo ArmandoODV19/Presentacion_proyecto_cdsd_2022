@@ -306,10 +306,13 @@ write.table(pulque_gtdbtk, file = "/home/megadriveCURSO/pulque/Metadatos.txt", s
 ```
 
 ---
-background-position: center
 # Taxonomía
+```{r ima1, echo=TRUE, out.height='30%', out.height='30%', fig.align='center'}
 
-![](presentacion_proyecto_files/imagenes/domain.png){width=30%, height=30%}
+```
+
+
+![](presentacion_proyecto_files/imagenes/domain.png)
 
 ---
 
